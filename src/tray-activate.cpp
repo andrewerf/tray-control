@@ -36,7 +36,7 @@ int main( int argc, char** argv )
 
     std::optional<std::string> id;
     std::optional<std::string> title;
-    if ( auto [countId, countTitle] = std::make_tuple( options.count( "id" ), options.count( "count" ) );
+    if ( auto [countId, countTitle] = std::make_tuple( options.count( "id" ), options.count( "title" ) );
          countId != 0 && countTitle != 0 || countId == 0 && countTitle == 0 )
     {
         exitWithMsg( "Please specify either id or title (and not both)", 0 );
