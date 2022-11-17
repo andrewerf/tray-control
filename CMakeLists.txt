@@ -18,3 +18,5 @@ target_link_libraries(tray-show core cxxopts fmt)
 
 add_executable(tray-activate src/tray-activate.cpp)
 target_link_libraries(tray-activate core cxxopts fmt)
+
+install(TARGETS tray-show tray-activate)
