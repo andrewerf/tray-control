@@ -12,7 +12,7 @@
 
 void exitWithMsg( std::string_view msg, int code = -1 )
 {
-    std::cerr << msg;
+    std::cerr << msg << std::endl;
     exit( code );
 }
 
