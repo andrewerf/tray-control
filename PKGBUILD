@@ -2,18 +2,25 @@ pkgname=tray-control
 pkgver=0.0.0
 pkgrel=1
 arch=('x86_64')
-depends=('systemd'
+
+depends=('systemd-libs'
          'fmt'
-         'dbus'
          'sdbus-cpp')
+
+makedepends=('git')
+
 pkgdesc="Simple CLI tool to show items in systray and activate them. Build on top of DBus"
+
 url="https://github.com/andrewerf/tray-control"
+
 source=('git+https://github.com/andrewerf/tray-control.git'
         'git+https://github.com/Neargye/magic_enum.git'
         'git+https://github.com/jarro2783/cxxopts.git')
+
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
+
 license=('GPL3')
 
 prepare(){
