@@ -52,8 +52,7 @@ System tray item should consider them for displaying sub menus or other stuff (b
 For more information about SystemTrayItems please see: [StatusNotifierItem](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/StatusNotifierItem/).
 
 ## Dependencies
-This tool depends on `systemd` and `dbus` in runtime.
-For building, there are a few more dependencies: `sdbus-cpp` (for safe interactions with dbus) and `fmt` (for formatting strings) libraries.
+This tool depends on `systemd-libs`, `sdbus-cpp` and `fmt`.
 There also submodule dependencies: `cxxopts` and `magic_enum` but you should generally not worry about them since they are included as submodules into this repo.
 
 ## Installation
