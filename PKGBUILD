@@ -23,6 +23,11 @@ md5sums=('SKIP'
 
 license=('GPL3')
 
+
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare(){
     cd $pkgname
     git submodule init
