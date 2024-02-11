@@ -10,6 +10,12 @@
 #include "Utils.h"
 
 
+#define WRAP_FUNC_TO_LAMBDA( func ) \
+    [] <typename ...Args> ( Args&& ...args ) -> decltype( auto ) \
+        { return func( std::forward<Args>( args )... ); }
+
+
+
 void exitWithMsg( std::string_view msg, int code = -1 )
 {
     std::cerr << msg << std::endl;
@@ -43,15 +49,15 @@ int main( int argc, char** argv )
             StatusNotifierItem item( addr );
             if ( auto connRes = item.connect() )
             {
-                item.getCategory() >> std::bind_front( fmt::printf<std::string_view, std::string>, "Category: %s\n" );
-                item.getTitle() >> std::bind_front( fmt::printf<std::string_view, std::string>, "Title: %s\n" );
+                item.getCategory() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "Category: %s\n" );
+                item.getTitle() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "Title: %s\n" );
 
                 if ( verboseOutput )
                 {
-                    item.getId() >> std::bind_front( fmt::printf<std::string_view, std::string>, "Id: %s\n" );
-                    item.getStatus() >> std::bind_front( fmt::printf<std::string_view, std::string>, "Status: %s\n" );
-                    item.getWindowId() >> std::bind_front( fmt::printf<std::string_view, uint32_t>, "WindowId: %d\n" );
-                    item.getIconName() >> std::bind_front( fmt::printf<std::string_view, std::string>, "IconName: %s\n" );
+                    item.getId() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "Id: %s\n" );
+                    item.getStatus() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "Status: %s\n" );
+                    item.getWindowId() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "WindowId: %d\n" );
+                    item.getIconName() >> std::bind_front( WRAP_FUNC_TO_LAMBDA( fmt::printf ), "IconName: %s\n" );
                 }
             }
             else
